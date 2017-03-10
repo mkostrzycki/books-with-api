@@ -1,0 +1,11 @@
+.books {
+    table-layout: fixed;
+}
+
+th {
+    width: 50%;
+}
+
+.description {
+    display: none;
+}
