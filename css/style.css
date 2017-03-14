@@ -10,10 +10,24 @@
 }
 
 .books-list div.row div {
-    border: 1px solid black;
     padding: 10px;
 }
 
-.description {
+.books-list .name,
+.books-list .author {
+    border-top: 1px solid black;
+}
+
+.books-list .name:hover {
+    color: #777;
+}
+
+.books-list .description {
     display: none;
+    border-top: 1px dashed #ccc;
+}
+
+.books-list .description::first-letter {
+    font-size: 150%;
+    color: sienna;
 }
