@@ -1,5 +1,5 @@
 .books-list {
-    margin-top: 20px;
+    margin: 20px;
 }
 
 .books-list .header {
@@ -18,8 +18,24 @@
     border-top: 1px solid black;
 }
 
+.books-list .author {
+    position: relative;
+}
+
 .books-list .name:hover {
     color: #777;
+}
+
+.books-list .remove {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+.books-list .remove:hover {
+    text-decoration: none;
+    color: black;
 }
 
 .books-list .description {

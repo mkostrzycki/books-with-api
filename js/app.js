@@ -1,17 +1,17 @@
 $(document).ready(function () {
 
-    console.log('Welcome :)');
+    // div z listą książek
+    var booksListContainer = $('.books-list');
 
     // Za pierwszym razem doda nam wszystkie znalezione w DB książki.
     updateBooksList();
 
-    // kliknięcie w tytuł
-    var booksListContainer = $('.books-list');
 
-    // Zaczepiam event na czyś co na pewno istnieje, czyli na div, który jest
-    // wrapperem listy książek. Deleguję event do divów o klasie name. Teraz
-    // mogę sledzić kliknięcia na divach z tytułem książki, chociaż są generowane
-    // dynamicznie :)
+    /*
+     * Ładowanie z DB opisu
+     * po kliknięciu w tytuł książki, czyli div o klasie "name".
+     */
+
     booksListContainer.on('click', 'div.name', function (event) {
 
         var bookID = $(this).parent().data('id');
@@ -32,10 +32,17 @@ $(document).ready(function () {
                 divDesc.slideToggle();
 
             }
+
+            /* @ToDo: Dodać zachowanie w przypadku błędu. */
         });
     });
 
-    // wysłanie formularza
+
+    /*
+     * Dodawanie książki
+     * po kliknięciu w button Add w formularzu.
+     */
+
     var addBookSubmitBtn = $('#add_book_btn');
 
     addBookSubmitBtn.click(function (event) {
@@ -52,12 +59,45 @@ $(document).ready(function () {
             type: 'POST',
 
             success: function (data, textStatus, jqXHR) {
-                console.log('Hurra!');
-                // wyczyść inputy
+
+                /* @ToDo: Wyczyścić zawartość inputów. */
 
                 // Doda nam te wiersze, które są w bazie a nie ma w DOMie.
                 updateBooksList();
             }
+
+            /* @ToDo: Dodać zachowanie w przypadku błędu. */
+        });
+
+    });
+
+
+    /*
+     * Usuwanie książki
+     * po kliknięciu w link o klasie "remove".
+     */
+
+    booksListContainer.on('click', 'a.remove', function (event) {
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        var bookID = $(this).parent().parent().data('id');
+
+        $.ajax({
+            url: 'api/books.php?id=' + bookID,
+            type: 'DELETE',
+
+            success: function (result) {
+                // usuwamy wiersz
+                var rowToDelete = $('.row[data-id=' + bookID + ']');
+                // Dla lepszego efektu, najpierw "znikamy" element :)
+                rowToDelete.fadeTo('slow', 0, function () {
+                    rowToDelete.remove();
+                });
+            }
+
+            /* @ToDo: Dodać zachowanie w przypadku błędu. */
         });
 
     });
@@ -65,9 +105,11 @@ $(document).ready(function () {
 });
 
 ///////////////////////////////////////////////////////////////
-/* 
+/** 
  * Collect data from DB. Create and append rows
  * only if they don't already exist.
+ * 
+ * @returns {undefined}
  */
 function updateBooksList() {
 
@@ -90,8 +132,6 @@ function updateBooksList() {
 
             for (var index in data) {
 
-//                console.log(data[index]);
-
                 //////////////////////////////////////
                 // struktura
                 //
@@ -102,9 +142,9 @@ function updateBooksList() {
                 //
 
                 var id = data[index]['id'];
-                
-                // Sprawdzam , czy wiersz z ID pobranym z bazy już istnieje
-                // jeżeli nie, to go dodaję.
+
+                // Sprawdzam , czy wiersz z ID pobranym z bazy już istnieje.
+                // Jeżeli nie, to go dodaję.
                 if ($.inArray(parseInt(id), existingRowsIDs) === -1) { // inArray zwraca index lub -1
 
                     // tworzymy div z klasą row i ustawiamy data-id = id z DB
@@ -117,6 +157,10 @@ function updateBooksList() {
                     // tworzymy div col author
                     var divColAuthor = $('<div>').addClass('author').addClass('col-sm-4');
                     divColAuthor.text(data[index]['author']);
+
+                    // dodajemy link do usuwania książki
+                    var removeBookLink = $('<a>').addClass('remove').html('remove book');
+                    divColAuthor.append(removeBookLink);
 
                     // tworzymy div col description
                     var divColDescription = $('<div>').addClass('description').addClass('col-lg-8');

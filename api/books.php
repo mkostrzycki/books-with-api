@@ -61,8 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  * Remove book
  */
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    parse_str(file_get_contents("php://input"), $del_vars);
-    $id = $del_vars['id'];
+//    $del_vars = [];
+//    parse_str(file_get_contents("php://input"), $del_vars);
+//    $id = $del_vars['id'];
+    
+    $id = $_GET['id'];
 
     $book = new Book();
     $book->loadFromDB($id);
