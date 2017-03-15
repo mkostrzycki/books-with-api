@@ -26,14 +26,24 @@
     color: #777;
 }
 
-.books-list .remove {
-    position: absolute;
-    right: 10px;
+.books-list .remove,
+.books-list .modify {
     cursor: pointer;
     color: #ddd;
 }
 
-.books-list .remove:hover {
+.books-list .remove {
+    position: absolute;
+    right: 10px;
+}
+
+.books-list .modify {
+    position: absolute;
+    right: 65px;
+}
+
+.books-list .remove:hover,
+.books-list .modify:hover {
     text-decoration: none;
     color: black;
 }
@@ -46,4 +56,9 @@
 .books-list .description::first-letter {
     font-size: 150%;
     color: sienna;
+}
+
+#modify_book {
+    display: none;
+    margin-top: 20px;
 }

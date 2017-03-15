@@ -61,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  * Remove book
  */
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-//    $del_vars = [];
+
+/** @ToDo: Sprawdzić, dlaczego nie działa pobieranie zmiennych z użyciem "php://input". */
 //    parse_str(file_get_contents("php://input"), $del_vars);
 //    $id = $del_vars['id'];
     
@@ -107,9 +108,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
         
     }
 
-    if (!(strlen(trim($put_vars['desc'])) == 0)) {
+    if (!(strlen(trim($put_vars['book_desc'])) == 0)) {
         
-        $desc = $put_vars['desc'];
+        $desc = $put_vars['book_desc'];
         
     } else {
         

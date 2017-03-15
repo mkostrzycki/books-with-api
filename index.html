@@ -29,6 +29,27 @@
                 </div>
                 <button type="submit" class="btn btn-primary" id="add_book_btn">Add</button>
             </form>
+            <form action="" method="post" role="form" id="modify_book">
+                <legend>Modify the Book</legend>
+                <div class="form-group">
+                    <label>ID
+                        <input type="text" class="form-control" name="id" id="modify_id">
+                    </label>
+                    <label>Title
+                        <input type="text" class="form-control" name="name" id="modify_name">
+                    </label>
+                    <label>Author
+                        <input type="text" class="form-control" name="author" id="modify_author">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Description
+                        <textarea class="form-control" name="book_desc" id="modify_book_desc"></textarea>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-warning" id="modify_book_btn">Modify</button>
+                <button class="btn btn-danger" id="cancel_modify_book_btn">Cancel</button>
+            </form>
             <div class="books-list">
                 <div class="row">
                     <div class="col-sm-4 header">Title</div>
