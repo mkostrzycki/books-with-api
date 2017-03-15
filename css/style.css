@@ -58,7 +58,30 @@
     color: sienna;
 }
 
+#add_book {
+    margin-top: 20px;
+}
+
+#add_book .form-wrapper {
+    display: none;
+}
+
 #modify_book {
     display: none;
     margin-top: 20px;
+}
+
+form .glyphicon-plus-sign {
+    font-size: 80%;
+    vertical-align: 0%;
+    margin-left: 10px;
+    color: #ccc;
+}
+
+form .glyphicon-plus-sign:hover {
+    color: black;
+}
+
+textarea {
+    resize: none;
 }

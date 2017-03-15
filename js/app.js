@@ -45,7 +45,11 @@ $(document).ready(function () {
      * Po kliknięciu w ikonkę +, rozwijamy formularz dodawania nowej książki. 
      */
     
-    /* @ToDo: Dodać rozwijanie i zwijanie formularza dodawania książki. */
+    var showAddBookFormIcon = $('#show_add_book');
+    
+    showAddBookFormIcon.click(function () {
+        $('#add_book .form-wrapper').slideToggle();
+    });
 
 
     /*
@@ -84,6 +88,27 @@ $(document).ready(function () {
 
     });
 
+
+    /*
+     * Dodawanie książki III
+     * Po kliknięciu w button Cancel w formularzu, czyścimy i chowamy formularz.
+     */
+
+    var cancelAddBookBtn = $('#cancel_add_book_btn');
+
+    cancelAddBookBtn.click(function (event) {
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        var addBookForm = $('#add_book');
+
+        //wyczyścić formularz
+        addBookForm.trigger('reset');
+
+        addBookForm.find('.form-wrapper').slideUp();
+    });
+    
 
     /*
      * Usuwanie książki

@@ -13,28 +13,29 @@
     <body>
         <div class="container">
             <form action="" method="post" role="form" id="add_book">
-                <legend>Add a Book</legend>
-                <div class="form-group">
-                    <label>Title
-                        <input type="text" class="form-control" name="name" id="name" placeholder="title...">
-                    </label>
-                    <label>Author
-                        <input type="text" class="form-control" name="author" id="author" placeholder="author...">
-                    </label>
+                <legend>Add a Book <span class="glyphicon glyphicon-plus-sign" id="show_add_book"></span></legend>
+                <div class="form-wrapper">
+                    <div class="form-group">
+                        <label>Title
+                            <input type="text" class="form-control" name="name" id="name" placeholder="title...">
+                        </label>
+                        <label>Author
+                            <input type="text" class="form-control" name="author" id="author" placeholder="author...">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Description
+                            <textarea class="form-control" name="book_desc" id="book_desc" rows="4" cols="50" maxlength="255" placeholder="description..."></textarea>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="add_book_btn">Add</button>
+                    <button class="btn btn-danger" id="cancel_add_book_btn">Cancel</button>
                 </div>
-                <div class="form-group">
-                    <label>Description
-                        <textarea class="form-control" name="book_desc" id="book_desc" placeholder="description..."></textarea>
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-primary" id="add_book_btn">Add</button>
             </form>
             <form action="" method="post" role="form" id="modify_book">
                 <legend>Modify the Book</legend>
                 <div class="form-group">
-                    <label>ID
-                        <input type="text" class="form-control" name="id" id="modify_id">
-                    </label>
+                    <input type="hidden" class="form-control" name="id" id="modify_id">
                     <label>Title
                         <input type="text" class="form-control" name="name" id="modify_name">
                     </label>
@@ -44,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label>Description
-                        <textarea class="form-control" name="book_desc" id="modify_book_desc"></textarea>
+                        <textarea class="form-control" name="book_desc" id="modify_book_desc" rows="4" cols="50" maxlength="255"></textarea>
                     </label>
                 </div>
                 <button type="submit" class="btn btn-warning" id="modify_book_btn">Modify</button>
