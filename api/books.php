@@ -4,8 +4,8 @@
  * Config
  */
 
-include_once('config/config.php');
-include_once('config/book.php');
+include_once(__DIR__ . '/config/config.php');
+include_once(__DIR__ . '/src/Book.php');
 
 /*
  * End point

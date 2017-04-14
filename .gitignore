@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/netbeans,macos,composer
 
+config/config.php
+
 ### Composer ###
 composer.phar
 /vendor/
@@ -48,3 +50,4 @@ nbdist/
 *.*~
 
 # End of https://www.gitignore.io/api/netbeans,macos,composer
+/api/config/config.php

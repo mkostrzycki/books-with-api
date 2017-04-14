@@ -319,9 +319,9 @@ function updateBooksList() {
                 // struktura
                 //
                 // div row
-                //   - div col name // najpierw 4 potem 12
-                //   - div col author // najpierw 4 potem 12
-                //   - div col description // najpierw 8 potem 12
+                //   - div col name
+                //   - div col author
+                //   - div col description
                 //
 
                 var id = data[index]['id'];
@@ -334,11 +334,11 @@ function updateBooksList() {
                     var row = $('<div class="row" data-id="' + id + '">');
 
                     // tworzymy div col name
-                    var divColName = $('<div>').addClass('name').addClass('col-sm-4');
+                    var divColName = $('<div>').addClass('name').addClass('col-sm-6');
                     divColName.text(data[index]['name']);
 
                     // tworzymy div col author
-                    var divColAuthor = $('<div>').addClass('author').addClass('col-sm-4');
+                    var divColAuthor = $('<div>').addClass('author').addClass('col-sm-6');
                     divColAuthor.text(data[index]['author']);
 
                     // dodajemy link do modyfikacji książki
@@ -350,6 +350,7 @@ function updateBooksList() {
                     divColAuthor.append(removeBookLink);
 
                     // tworzymy div col description
+                    /** @ToDo: Poprawić wyświetlanie dla tabletów */
                     var divColDescription = $('<div>').addClass('description').addClass('col-lg-8');
 
                     row.append(divColName);
